@@ -4,9 +4,9 @@
    "http://tiles.apache.org/dtds/tiles-config_2_1.dtd"> 
 
 <tiles-definitions>
-    <definition name="layouts" template="/WEB-INF/views/layout/template.jsp"> 
-        <put-attribute name="header" value="/WEB-INF/views/layout/header.jsp" /> 
-        <put-attribute name="footer" value="/WEB-INF/views/layout/footer.jsp" /> 
+    <definition name="layouts" template="/layout/template"> 
+        <put-attribute name="header" value="/layout/header" /> 
+        <put-attribute name="footer" value="/layout/footer" /> 
     </definition>
 
 <!-- 
@@ -18,7 +18,10 @@
     
     <definition name="*/*" extends="layouts">
        <put-attribute name="title" value="title.{1}.{2}" />
-       <put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
+       <put-attribute name="body" value="/{1}/{2}" />
     </definition>
+    
+     <definition name="*" template="/{1}"/> 
+    
    
 </tiles-definitions>

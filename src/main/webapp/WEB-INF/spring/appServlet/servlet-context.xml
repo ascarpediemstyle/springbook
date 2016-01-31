@@ -13,21 +13,21 @@
 	<annotation-driven />
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
-	<resources mapping="/resources/**" location="/resources/" />
-
-	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
-	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<beans:property name="prefix" value="/WEB-INF/views/" />
-		<beans:property name="suffix" value=".jsp" />
-	</beans:bean>
+	<resources mapping="/resources/**" location="/resources/" />	
 	
-	<!-- tiles -->
-	<beans:bean id="tilesViewResolver"
-	    class="org.springframework.web.servlet.view.tiles2.TilesViewResolver">
-	    <beans:property name="order" value="1" />
-	</beans:bean>
+	<!-- org.thymeleaf.templateresolver.ServletContextTemplateResolver -->	
+	<beans:bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource" />
+        
+	<beans:bean id="templateResolver" class="org.thymeleaf.templateresolver.ServletContextTemplateResolver" >
+	 	<beans:property name="order" value="1" />
+		<beans:property name="prefix" value="/WEB-INF/templates/" />
+		<beans:property name="suffix" value=".html" />
+		<beans:property name="characterEncoding" value="UTF-8" />
+		<beans:property name="templateMode" value="HTML5" />
+	</beans:bean>	
 	
-	<beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer"> 
+	<!-- Thymeleaf-extras-tiles2の設定 -->
+    <beans:bean id="tilesConfigurer" class="org.thymeleaf.extras.tiles2.spring3.web.configurer.ThymeleafTilesConfigurer">
 	    <beans:property name="definitions">
 	        <beans:list>
 	            <beans:value>/WEB-INF/spring/appServlet/tiles-definitions.xml</beans:value>
@@ -35,6 +35,29 @@
 	    </beans:property>
 	</beans:bean>
 	
+	<beans:bean id="templateEngine" class="org.thymeleaf.spring3.SpringTemplateEngine" >
+		<beans:property name="templateResolver" ref="templateResolver" />
+		<beans:property name="additionalDialects">
+            <beans:set>
+              <beans:bean class="org.thymeleaf.extras.tiles2.dialect.TilesDialect"/>
+            </beans:set>
+        </beans:property>
+	</beans:bean>
+	
+	<beans:bean class="org.thymeleaf.spring3.view.ThymeleafViewResolver" >
+		<beans:property name="templateEngine" ref="templateEngine" />
+		<beans:property name="characterEncoding" value="UTF-8" />
+		<beans:property name="viewClass" value="org.thymeleaf.extras.tiles2.spring3.web.view.ThymeleafTilesView"/>
+	</beans:bean>	
+	
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="order" value="2" />
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+		<beans:property name="viewNames" value="*jsp" />
+	</beans:bean>
+
 	<context:component-scan base-package="com.ascarpediemstyle.book" />
 	
 	

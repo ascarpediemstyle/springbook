@@ -27,10 +27,10 @@
 		
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
-		<url-pattern>/</url-pattern>
+		<url-pattern>/*</url-pattern>
 	</servlet-mapping>
 	
-	<jsp-config>
+	<!-- <jsp-config>
 	    <jsp-property-group>
 	        <url-pattern>*.jsp</url-pattern>
 	        <el-ignored>false</el-ignored>
@@ -38,6 +38,6 @@
 	        <scripting-invalid>false</scripting-invalid>
 	        <include-prelude>/WEB-INF/views/common/include.jsp</include-prelude> 
 	    </jsp-property-group>
-	</jsp-config>
+	</jsp-config> -->
 
 </web-app>
