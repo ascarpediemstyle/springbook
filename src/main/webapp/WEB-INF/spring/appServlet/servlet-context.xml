@@ -27,7 +27,7 @@
 	</beans:bean>	
 	
 	<!-- Thymeleaf-extras-tiles2の設定 -->
-    <beans:bean id="tilesConfigurer" class="org.thymeleaf.extras.tiles2.spring3.web.configurer.ThymeleafTilesConfigurer">
+    <beans:bean id="tilesConfigurer" class="org.thymeleaf.extras.tiles2.spring4.web.configurer.ThymeleafTilesConfigurer">
 	    <beans:property name="definitions">
 	        <beans:list>
 	            <beans:value>/WEB-INF/spring/appServlet/tiles-definitions.xml</beans:value>
@@ -35,7 +35,7 @@
 	    </beans:property>
 	</beans:bean>
 	
-	<beans:bean id="templateEngine" class="org.thymeleaf.spring3.SpringTemplateEngine" >
+	<beans:bean id="templateEngine" class="org.thymeleaf.spring4.SpringTemplateEngine" >
 		<beans:property name="templateResolver" ref="templateResolver" />
 		<beans:property name="additionalDialects">
             <beans:set>
@@ -44,10 +44,10 @@
         </beans:property>
 	</beans:bean>
 	
-	<beans:bean class="org.thymeleaf.spring3.view.ThymeleafViewResolver" >
+	<beans:bean class="org.thymeleaf.spring4.view.ThymeleafViewResolver" >
 		<beans:property name="templateEngine" ref="templateEngine" />
 		<beans:property name="characterEncoding" value="UTF-8" />
-		<beans:property name="viewClass" value="org.thymeleaf.extras.tiles2.spring3.web.view.ThymeleafTilesView"/>
+		<beans:property name="viewClass" value="org.thymeleaf.extras.tiles2.spring4.web.view.ThymeleafTilesView"/>
 	</beans:bean>	
 	
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
@@ -58,6 +58,7 @@
 		<beans:property name="viewNames" value="*jsp" />
 	</beans:bean>
 
+	<context:annotation-config />
 	<context:component-scan base-package="com.ascarpediemstyle.book" />
 	
 	

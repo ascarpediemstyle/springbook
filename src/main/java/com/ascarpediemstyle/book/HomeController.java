@@ -2,6 +2,7 @@ package com.ascarpediemstyle.book;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.Properties;
 
@@ -12,6 +13,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.ascarpediemstyle.dataaccess.CustomerRepository;
+import com.ascarpediemstyle.model.Customer;
 
 /**
  * Handles requests for the application home page.
@@ -24,6 +28,9 @@ public class HomeController {
 	
 	@Autowired
     private Properties applicationProperties;
+	
+	@Autowired
+	private CustomerRepository customerRepository;
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
@@ -51,6 +58,8 @@ public class HomeController {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		logger.info("ここ");		
 		
+		List<Customer> customers = (List<Customer>) customerRepository.findAll();
+		logger.info(customers.get(0).getCustomerName());
 		return "book/test";
 	}
 	
