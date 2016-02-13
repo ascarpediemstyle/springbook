@@ -66,6 +66,20 @@ public class HomeController {
 		return "home";
 	}
 	
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public String list( Model model) { 
+		List<Book> books = bookService.getBooks();		
+		model.addAttribute("books", books );		
+		return "book/list";
+	}
+	
+	@RequestMapping(value = "/show", method = RequestMethod.GET)
+	public String show( Model model) { 
+		Book book = bookService.getBookByName("CCC");		
+		model.addAttribute("book", book );		
+		return "book/show";
+	}
+	
 	@RequestMapping(value = "/test", method = RequestMethod.GET)
 	public String test(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);

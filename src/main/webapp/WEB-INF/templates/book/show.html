@@ -1,0 +1,40 @@
+
+<div th:if="book!=null" th:object="${book}">
+	<p>
+		<strong>Name:</strong> <span th:text="*{bookName}" />
+	</p>
+
+	<p>
+		<strong>Price:</strong>
+		<!-- <%= number_to_currency(@book.price, :precision=> 0 ,:unit => "\", :separator => ",") %> -->
+	</p>
+
+	<p></p>
+	<div id="star">
+		<strong>Rnak:</strong>
+	</div>
+	<p></p>
+
+	<script th:utext="|doRaty('star',*{rank})|"></script>
+
+	<p th:utext="*{amazonUrl}"></p>
+
+	<p>
+		<strong>Description:</strong>
+	</p>
+
+	<p th:text="*{description}"></p>
+
+	<p>
+		<strong>Comment:</strong>
+	</p>
+	<p th:text="*{comment}"></p>
+
+</div>
+
+<!-- 
+<% if @is_admin_mode then  %>
+    <%= link_to 'Edit', edit_book_path(@book) %> |
+<% end %>
+
+<%= link_to 'Back', books_path %> -->
