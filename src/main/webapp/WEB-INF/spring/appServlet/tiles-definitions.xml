@@ -21,7 +21,8 @@
        <put-attribute name="body" value="/{1}/{2}" />
     </definition>
     
-     <definition name="*" template="/{1}"/> 
+  
+    <definition name="*" template="/{1}"/> 
     
    
 </tiles-definitions>
