@@ -8,19 +8,11 @@
         <put-attribute name="header" value="/layout/header" /> 
         <put-attribute name="footer" value="/layout/footer" /> 
     </definition>
-
-<!-- 
-    <definition name="*/*" extends="layouts">
-        <put-attribute name="title" value="title.{1}.{2}" /> 
-        <put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" /> 
-    </definition>
- -->
-    
+   
     <definition name="*/*" extends="layouts">
        <put-attribute name="title" value="title.{1}.{2}" />
        <put-attribute name="body" value="/{1}/{2}" />
-    </definition>
-    
+    </definition>    
   
     <definition name="*" template="/{1}"/> 
     

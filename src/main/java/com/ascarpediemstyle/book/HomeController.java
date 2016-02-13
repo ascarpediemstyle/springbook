@@ -66,14 +66,14 @@ public class HomeController {
 		return "home";
 	}
 	
-//	@RequestMapping(value = "/test", method = RequestMethod.GET)
-//	public String test(Locale locale, Model model) {
-//		logger.info("Welcome home! The client locale is {}.", locale);
-//		logger.info("ここ");		
-//		
-//		List<Customer> customers = (List<Customer>) customerRepository.findAll();
-//		logger.info(customers.get(0).getCustomerName());
-//		return "book/test";
-//	}
+	@RequestMapping(value = "/test", method = RequestMethod.GET)
+	public String test(Locale locale, Model model) {
+		logger.info("Welcome home! The client locale is {}.", locale);
+		logger.info("ここ");		
+		
+		Book book = bookService.getBookByName("CCC");
+		logger.info(book.getBookName());
+		return "book/test";
+	}
 	
 }
