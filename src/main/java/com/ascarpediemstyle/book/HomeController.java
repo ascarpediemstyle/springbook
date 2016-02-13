@@ -3,6 +3,7 @@ package com.ascarpediemstyle.book;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.Properties;
 
@@ -14,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.ascarpediemstyle.book.entity.Book;
 import com.ascarpediemstyle.book.service.BookServiceImpl;
 /**
  * Handles requests for the application home page.
@@ -43,6 +45,10 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		bookService.print();
+		Book book = bookService.getBookByName("CCC");
+		List<Book> books = bookService.getBooks("CCC");
+		logger.info(book.getBookName());
+		logger.info(Integer.toString(books.size()));
 		return "home";
 	}
 	

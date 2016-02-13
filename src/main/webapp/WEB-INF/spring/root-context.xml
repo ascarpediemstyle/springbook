@@ -40,7 +40,7 @@
         </property> 
     </bean>
      
-    <jpa:repositories base-package="com.ascarpediemstyle.book.dataaccess" />
+    <jpa:repositories base-package="com.ascarpediemstyle.book.repository" />
      
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory" />

@@ -7,8 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ascarpediemstyle.book.dataaccess.BookRepository;
-import com.ascarpediemstyle.book.model.Book;
+import com.ascarpediemstyle.book.entity.Book;
+import com.ascarpediemstyle.book.repository.BookRepository;
 
 
 @Service
@@ -21,7 +21,17 @@ public class BookServiceImpl {
 	
 	
 	public List<Book> getBooks(){
+		
 		return bookRepository.findAll();
+	}
+	
+public List<Book> getBooks(String name){
+		
+		return bookRepository.findBooks(name);
+	}
+	
+	public Book getBookByName(String name){
+		return bookRepository.findByBookName(name);
 	}
 	
 	public void print() {

@@ -1,4 +1,4 @@
-package com.ascarpediemstyle.book.model;
+package com.ascarpediemstyle.book.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
