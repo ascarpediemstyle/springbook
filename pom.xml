@@ -22,10 +22,10 @@
         <spring-data-jpa-version>1.8.2.RELEASE</spring-data-jpa-version>
 		<apache-tiles-version>2.2.2</apache-tiles-version>
 		
-		<jdbc.driverClassName>org.postgresql.Driver</jdbc.driverClassName>
+		<!-- <jdbc.driverClassName>org.postgresql.Driver</jdbc.driverClassName>
         <jdbc.url>jdbc:postgresql://localhost:5432/testdb</jdbc.url>
         <jdbc.user>postgres</jdbc.user>
-        <jdbc.password>postgres</jdbc.password>         
+        <jdbc.password>postgres</jdbc.password>       -->   
 
 	</properties>
 	
@@ -212,6 +212,24 @@
 	</dependencies>
     <build>
         <plugins>
+        	<plugin>
+			    <groupId>org.codehaus.mojo</groupId>
+			    <artifactId>properties-maven-plugin</artifactId>
+			    <version>1.0-alpha-2</version>
+			    <executions>
+			      <execution>
+			        <phase>initialize</phase>
+			        <goals>
+			          <goal>read-project-properties</goal>
+			        </goals>
+			      </execution>
+			    </executions>
+			    <configuration>
+			      <files>
+			        <file>src/main/webapp/WEB-INF/spring/database.properties</file>
+			      </files>
+			    </configuration>
+			</plugin>
             <plugin>
                 <artifactId>maven-eclipse-plugin</artifactId>
                 <version>2.9</version>
@@ -253,6 +271,7 @@
                 <artifactId>flyway-maven-plugin</artifactId>
                 <version>3.2.1</version>  
                 <configuration>
+                  
                 	<driver>${jdbc.driverClassName}</driver>
                     <url>${jdbc.url}</url>
                     <user>${jdbc.user}</user>
