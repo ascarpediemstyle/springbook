@@ -13,6 +13,8 @@
       <th>出版社</th>
       <th width="80px">カテゴリ</th>
       <th colspan="1"></th>
+      
+      
     </tr>
   </thead>
 
@@ -20,10 +22,17 @@
    
       <tr th:each="book : ${books}">
       	 <td th:text="${book.bookName}"></td>
+      	 <td></td>
+      	 <td></td>
+      	 <td></td>
+      	 <td></td>      	
+      	 <td></td>
+      	 <td><a th:href="@{/show(id=${book.bookId})}" >詳細</a></td>
       </tr>
        
   </tbody>
 </table>
+
 
 
 <!-- <% if @is_admin_mode then  %>

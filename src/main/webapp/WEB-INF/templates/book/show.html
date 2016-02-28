@@ -1,11 +1,12 @@
 
 <div th:if="book!=null" th:object="${book}">
 	<p>
-		<strong>Name:</strong> <span th:text="*{bookName}" />
+		<strong>Name:</strong><span th:text="*{bookName}" />
 	</p>
 
 	<p>
 		<strong>Price:</strong>
+		<p th:utext="*{#strings.prepend(#numbers.formatInteger(price,1,'COMMA'),'\')}"></p>
 		<!-- <%= number_to_currency(@book.price, :precision=> 0 ,:unit => "\", :separator => ",") %> -->
 	</p>
 

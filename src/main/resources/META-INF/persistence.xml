@@ -9,7 +9,6 @@
         <class>com.ascarpediemstyle.book.entity.Book</class>
         <class>com.ascarpediemstyle.book.entity.Categorie</class>
         <class>com.ascarpediemstyle.book.entity.Customer</class>
-        <class>com.ascarpediemstyle.book.entity.Pserion</class>
         <class>com.ascarpediemstyle.book.entity.Publisher</class>
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />

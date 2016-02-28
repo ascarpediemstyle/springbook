@@ -1,4 +1,4 @@
-package com.ascarpediemstyle.book;
+package com.ascarpediemstyle.book.controller;
 
 
 import java.text.DateFormat;
@@ -74,7 +74,7 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/show", method = RequestMethod.GET)
-	public String show( Model model) { 
+	public String show(Model model) { 
 		Book book = bookService.getBookByName("CCC");		
 		model.addAttribute("book", book );		
 		return "book/show";
